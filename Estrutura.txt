@@ -1,0 +1,8 @@
+meu-portfolio/
+│
+├── index.html          (página principal)
+├── style.css           (estilos)
+├── script.js           (opcional, para interações)
+└── assets/
+    ├── images/         (suas fotos/projetos)
+    └── favicon.ico     (ícone do site)
