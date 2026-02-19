@@ -1,157 +1,636 @@
 <!DOCTYPE html>
+<!-- 
+    DOCTYPE: Declaração que informa ao navegador que este é um documento HTML5.
+    Sempre coloque no início de qualquer página HTML.
+-->
 <html lang="pt-br">
+<!-- 
+    <html>: Elemento raiz do documento.
+    lang="pt-br": Atributo que define o idioma como português do Brasil.
+    IMPORTANTE: Ajuda na acessibilidade e SEO (otimização para mecanismos de busca).
+-->
 <head>
+    <!-- 
+        <head>: Contém informações sobre o documento que não são exibidas diretamente.
+        Metadados, título, links para CSS, etc.
+    -->
     <meta charset="UTF-8">
+    <!-- 
+        meta charset: Define a codificação de caracteres como UTF-8.
+        Permite acentos, emojis e caracteres especiais.
+    -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Portfólio | Metodologia BIM</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- 
+        viewport: Torna o site responsivo para dispositivos móveis.
+        width=device-width: largura igual à do dispositivo.
+        initial-scale=1.0: zoom inicial padrão.
+    -->
+    <title>Portfólio Boho | Design e Fotografia</title>
+    <!-- 
+        <title>: Título que aparece na aba do navegador.
+        ESTRATÉGIA: Inclua palavras-chave para SEO.
+    -->
+    
+    <!-- Font Awesome 6 (Biblioteca de ícones) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- 
+        Font Awesome: Biblioteca gratuita de ícones vetoriais.
+        ESTRATÉGIA: Use ícones para melhorar a comunicação visual.
+    -->
+    
+    <!-- CSS Personalizado -->
+    <style>
+        /* 
+            CSS: Linguagem para estilizar elementos HTML.
+            Vamos criar um tema boho com cores terrosas, tipografia suave e espaçamento generoso.
+            ESTRATÉGIA: CSS organizado por seções facilita a manutenção.
+        */
+        
+        /* Reset básico e estilos globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* 
+                box-sizing: border-box: Inclui padding e bordas no cálculo da largura total.
+                Evita que elementos "estourem" o container.
+            */
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* 
+                font-family: Define fontes em ordem de prioridade.
+                ESTRATÉGIA: Use fontes seguras ou importe Google Fonts para mais personalidade.
+            */
+            line-height: 1.6;
+            color: #4a4a4a;
+            background-color: #faf7f2;
+            /* 
+                Paleta boho: tons neutros e terrosos.
+                #faf7f2 = off-white quente
+            */
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            /* 
+                .container: Classe utilitária para centralizar conteúdo.
+                max-width: largura máxima para telas grandes.
+                margin: 0 auto: centraliza horizontalmente.
+            */
+        }
+        
+        /* Seções */
+        .section {
+            padding: 80px 0;
+            /* 
+                Espaçamento vertical para cada seção.
+                ESTRATÉGIA: padding generoso cria sensação de respiro/luxo.
+            */
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: #5a7d3e; /* Verde sálvia */
+            margin-bottom: 16px;
+            text-align: center;
+            font-weight: 400;
+            letter-spacing: 2px;
+            /* 
+                text-align: center: centraliza texto.
+                letter-spacing: espaçamento entre letras (sofisticação).
+            */
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #8b7a62; /* Marrom suave */
+            margin-bottom: 48px;
+            font-style: italic;
+            /* 
+                font-style: italic: dá tom mais pessoal/artístico.
+            */
+        }
+        
+        /* SOBRE */
+        .sobre-text {
+            max-width: 800px;
+            margin: 0 auto 48px;
+            font-size: 1.1rem;
+            text-align: center;
+            /* 
+                ESTRATÉGIA: centralizar e limitar largura melhora legibilidade.
+            */
+        }
+        
+        .sobre-text p {
+            margin-bottom: 20px;
+            /* 
+                <p>: Parágrafo. Espaçamento inferior para separar blocos de texto.
+            */
+        }
+        
+        .habilidades {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 32px;
+            /* 
+                display: flex: Ativa Flexbox (layout flexível).
+                flex-wrap: wrap: Permite que itens quebrem para linha seguinte.
+                gap: Espaçamento entre itens (moderno, evita margin complicada).
+                justify-content: center: Centraliza horizontalmente.
+                
+                ESTRATÉGIA: Flexbox é essencial para layouts responsivos.
+            */
+        }
+        
+        .habilidade-tag {
+            background-color: #e8e0d5; /* Bege */
+            color: #5a7d3e;
+            padding: 8px 20px;
+            border-radius: 50px; /* Bordas arredondadas */
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            /* 
+                border-radius: 50px: Cria formato de pílula.
+                transition: Suaviza animações.
+                ESTRATÉGIA: Interações sutis melhoram experiência do usuário.
+            */
+        }
+        
+        .habilidade-tag:hover {
+            background-color: #5a7d3e;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            /* 
+                :hover = quando mouse passa por cima.
+                transform: translateY(-2px): Move elemento 2px para cima.
+                box-shadow: Sombra suave para efeito de profundidade.
+                ESTRATÉGIA: Micro-interações tornam o site "vivo".
+            */
+        }
+        
+        /* PROJETOS - Grid */
+        .projetos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            /* 
+                display: grid: Ativa CSS Grid.
+                grid-template-columns: repeat(3, 1fr): 3 colunas de largura igual.
+                gap: 30px: Espaçamento entre cards.
+                
+                ESTRATÉGIA: Grid é poderoso para layouts 2D como galerias.
+            */
+        }
+        
+        .projeto-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden; /* Esconde conteúdo que ultrapassar bordas */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            padding-bottom: 24px;
+            /* 
+                box-shadow: Sombra suave eleva visualmente o card.
+                overflow: hidden: Mantém bordas arredondadas mesmo com imagens.
+            */
+        }
+        
+        .projeto-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            /* 
+                Elevação maior no hover para feedback visual.
+            */
+        }
+        
+        .projeto-img {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            /* 
+                Flexbox dentro do card para centralizar ícone.
+                text-shadow: Sombra em texto para contraste com fundo.
+            */
+        }
+        
+        .projeto-card h3 {
+            font-size: 1.5rem;
+            margin: 20px 20px 10px;
+            color: #5a7d3e;
+            font-weight: 500;
+        }
+        
+        .projeto-card p {
+            margin: 0 20px 20px;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .projeto-link {
+            display: inline-block;
+            margin-left: 20px;
+            color: #5a7d3e;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            /* 
+                text-decoration: none: Remove underline padrão do link.
+            */
+        }
+        
+        .projeto-link:hover {
+            color: #3d5a2c;
+            text-decoration: underline;
+            /* 
+                Adiciona underline no hover para indicar interatividade.
+            */
+        }
+        
+        /* CONTATO */
+        .contato-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            /* 
+                Layout de 2 colunas: formulário e informações de contato.
+            */
+        }
+        
+        .contato-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            /* 
+                flex-direction: column: Alinha itens verticalmente.
+            */
+        }
+        
+        .contato-form input,
+        .contato-form textarea {
+            padding: 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            /* 
+                font-family: inherit: Herda fonte do body (consistência).
+            */
+        }
+        
+        .contato-form input:focus,
+        .contato-form textarea:focus {
+            outline: none;
+            border-color: #5a7d3e;
+            box-shadow: 0 0 0 3px rgba(90, 125, 62, 0.1);
+            /* 
+                :focus = quando elemento está selecionado.
+                outline: none: Remove outline padrão (substituído por box-shadow).
+                ESTRATÉGIA: Indicadores visuais claros de foco melhoram acessibilidade.
+            */
+        }
+        
+        .btn {
+            background-color: #5a7d3e;
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            align-self: flex-start;
+            /* 
+                align-self: flex-start: Evita que botão estique em container flex.
+                cursor: pointer: Mãozinha ao passar mouse.
+            */
+        }
+        
+        .btn:hover {
+            background-color: #3d5a2c;
+            transform: scale(1.02);
+            /* 
+                transform: scale: Aumenta levemente tamanho no hover.
+            */
+        }
+        
+        .contato-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .info-item i {
+            font-size: 1.8rem;
+            color: #5a7d3e;
+            width: 50px;
+            text-align: center;
+            /* 
+                width e text-align: centraliza ícone independente do tamanho.
+            */
+        }
+        
+        .info-item h4 {
+            color: #5a7d3e;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        
+        .info-item p {
+            color: #8b7a62;
+        }
+        
+        /* FOOTER */
+        .footer {
+            background-color: #5a7d3e;
+            color: white;
+            padding: 40px 0;
+            margin-top: 40px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            /* 
+                space-between: Espaço máximo entre elementos.
+            */
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .footer-text {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px);
+            opacity: 0.8;
+        }
+        
+        /* MEDIA QUERIES - Responsividade */
+        @media (max-width: 768px) {
+            /* 
+                Media query: Aplica CSS apenas quando tela ≤ 768px.
+                ESTRATÉGIA: Essencial para mobile-first.
+            */
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .projetos-grid {
+                grid-template-columns: 1fr; /* 1 coluna em mobile */
+            }
+            
+            .contato-content {
+                grid-template-columns: 1fr; /* Empilha formulário e info */
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .habilidades {
+                gap: 8px;
+            }
+            
+            .habilidade-tag {
+                padding: 6px 16px;
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            /* Telas muito pequenas (celulares em portrait) */
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .info-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .btn {
+                align-self: stretch; /* Botão ocupa toda largura */
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Cabeçalho / Navegação -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="logo">
-                <i class="fas fa-leaf"></i>
-                <span>MeuPortfólio</span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">Início</a></li>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#projetos">Projetos</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-            <button class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
-        </nav>
-    </header>
 
-    <!-- Seção Hero / Início -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Olá, eu sou <span class="highlight">Luis de Araújo</span></h1>
-            <p class="hero-subtitle">Arquiteto e Urbanista, Designer & Desenvolvedor de Produtos</p>
-            <p class="hero-text">Crio experiências reais com base no seu conceito, levando em consideração entre estilo, segurança e sustentabilidade aliada com funcionalidade e conforto.</p>
-            <a href="#projetos" class="btn">Ver Meus Projetos</a>
-        </div>
-        <div class="hero-decoration">
-            <div class="circle"></div>
-            <div class="circle"></div>
-            <div class="circle"></div>
-        </div>
-    </section>
-
-    <!-- Seção Sobre -->
-    <section id="sobre" class="section sobre">
+    <!-- 
+        SEÇÃO SOBRE 
+        ESTRATÉGIA: Use lorem ipsum apenas como placeholder. 
+        Substitua por conteúdo real sobre você: sua história, seu processo criativo.
+    -->
+    <section id="sobre" class="section">
         <div class="container">
             <h2 class="section-title">Sobre Mim</h2>
-            <div class="sobre-content">
-                <div class="sobre-img">
-                    <!-- Substitua por sua foto -->
-                    <div class="img-placeholder">
-                        <i class="fas fa-user-circle"></i>
-                    </div>
-                </div>
-                <div class="sobre-text">
-                    <p>Possuo conhecimento em Revit (avançado), Archicad
-(intermediário), SketchUp (intermediário), Lumion (intermediário),
-AutoCAD, Rhino, V-Ray e Civil 3D, permitindo uma abordagem
-integrada para projetos arquitetônicos e de infraestrutura.</p>
-                    <p>Atualmente, atuo como Field Service em uma multinacional,
-trabalhando com suporte de tecnologia em Software, Hardware,
-Azure AD, AZ-104, AZ-900, ampliando minha visão sobre tecnologia
-aplicada à construção digital.
-Busco oportunidades para aplicar minha expertise na gestão
-e inovação de projetos BIM, contribuindo para a eficiência e
-sustentabilidade do setor</p>
-                    <div class="habilidades">
-                        <span class="habilidade-tag">Projeto de Arquitetura</span>
-                        <span class="habilidade-tag">Pericias Judiciais</span>
-                        <span class="habilidade-tag">Acessibilidade</span>
-                        <span class="habilidade-tag">Arquitetura Modular</span>
-
-                    </div>
+            <div class="sobre-text">
+                <p>
+                    Olá! Sou <strong>Ana Silva</strong>, designer e fotógrafa com alma boho. 
+                    Acredito que cada projeto conta uma história única, e meu trabalho é 
+                    traduzir essa narrativa em visuais autênticos e memoráveis.
+                    <!-- 
+                        <strong>: Ênfase forte (negrito). Indica importância semântica.
+                    -->
+                </p>
+                <p>
+                    Com 5 anos de experiência, já colaborei com marcas de moda sustentável, 
+                    cafés artesanais e estúdios de yoga. Minha abordagem combina design 
+                    minimalista com texturas orgânicas e uma paleta inspirada na natureza.
+                </p>
+                
+                <!-- 
+                    HABILIDADES
+                    Use <span> para tags/palavras individuais.
+                    ESTRATÉGIA: Destaque suas principais competências técnicas e artísticas.
+                -->
+                <div class="habilidades">
+                    <span class="habilidade-tag">UI/UX Design</span>
+                    <span class="habilidade-tag">HTML/CSS</span>
+                    <span class="habilidade-tag">JavaScript</span>
+                    <span class="habilidade-tag">Fotografia</span>
+                    <span class="habilidade-tag">Ilustração Digital</span>
+                    <span class="habilidade-tag">Branding</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Seção Projetos -->
+    <!-- 
+        SEÇÃO PROJETOS
+        ESTRATÉGIA: Portfólio é seu "mostruário". 
+        - Inclua apenas seus melhores trabalhos (qualidade > quantidade)
+        - Cada projeto deve ter: título, descrição curta, imagem/ícone e link
+        - Substitua href="#" pelo link real do projeto (Behance, site, etc)
+    -->
     <section id="projetos" class="section projetos">
         <div class="container">
             <h2 class="section-title">Meus Projetos</h2>
             <p class="section-subtitle">Trabalhos selecionados com amor e atenção aos detalhes</p>
             
             <div class="projetos-grid">
-                <!-- Projeto 1 -->
+                <!-- 
+                    PROJETO 1 
+                    style="background-color: ...": CSS inline (específico para este elemento)
+                    ESTRATÉGIA: Use cores harmônicas com sua identidade visual
+                -->
                 <div class="projeto-card">
                     <div class="projeto-img" style="background-color: #d7ccc8;">
                         <i class="fas fa-palette"></i>
                     </div>
                     <h3>Design de Marca</h3>
-                    <p>Identidade visual completa para uma marca de produtos naturais.</p>
+                    <p>Identidade visual completa para a "Flora Natura", marca de cosméticos orgânicos.</p>
                     <a href="#" class="projeto-link">Ver detalhes →</a>
                 </div>
                 
-                <!-- Projeto 2 -->
+                <!-- PROJETO 2 -->
                 <div class="projeto-card">
                     <div class="projeto-img" style="background-color: #ffccbc;">
                         <i class="fas fa-laptop-code"></i>
                     </div>
                     <h3>Site E-commerce</h3>
-                    <p>Loja online responsiva com integração de pagamentos.</p>
+                    <p>Loja online responsiva para a marca de roupas "Boho Chic". Integração com PagSeguro.</p>
                     <a href="#" class="projeto-link">Ver detalhes →</a>
                 </div>
                 
-                <!-- Projeto 3 -->
+                <!-- PROJETO 3 -->
                 <div class="projeto-card">
-                    <div class="projeto-img" style="background-color: #5a7d3e;">
+                    <div class="projeto-img" style="background-color: #bcaaa4;">
                         <i class="fas fa-camera"></i>
                     </div>
-                    <h3>Fotografia Boho</h3>
-                    <p>Série fotográfica inspirada na natureza e texturas orgânicas.</p>
+                    <h3>Fotografia: Essência</h3>
+                    <p>Série fotográfica inspirada na natureza e texturas orgânicas do cerrado brasileiro.</p>
                     <a href="#" class="projeto-link">Ver detalhes →</a>
                 </div>
+                
+                <!-- 
+                    DICA: Adicione mais projetos seguindo o mesmo padrão.
+                    Mínimo de 3 projetos, máximo de 6 para não poluir.
+                -->
             </div>
         </div>
     </section>
 
-    <!-- Seção Contato -->
+    <!-- 
+        SEÇÃO CONTATO
+        ESTRATÉGIA: Facilite ao máximo o contato.
+        - Formulário funcional (integre com FormSubmit, Netlify, ou backend)
+        - Informações reais de contato
+        - Call-to-action clara ("Vamos Conversar")
+    -->
     <section id="contato" class="section contato">
         <div class="container">
             <h2 class="section-title">Vamos Conversar</h2>
             <p class="section-subtitle">Adoraria ouvir sobre seu próximo projeto</p>
             
             <div class="contato-content">
-                <form class="contato-form">
+                <!-- 
+                    FORMULÁRIO
+                    method="POST": Envia dados de forma segura (não aparece na URL)
+                    action: URL que processará os dados (substitua)
+                    
+                    DICA GRATUITA: Use https://formsubmit.co/ para receber e-mails sem backend!
+                    Ex: action="https://formsubmit.co/seuemail@exemplo.com"
+                -->
+                <form class="contato-form" method="POST" action="#">
                     <input type="text" placeholder="Seu nome" required>
+                    <!-- 
+                        required: Campo obrigatório. Navegador impede envio vazio.
+                    -->
                     <input type="email" placeholder="Seu e-mail" required>
+                    <!-- 
+                        type="email": Valida formato de e-mail automaticamente.
+                    -->
                     <textarea placeholder="Sua mensagem..." rows="5" required></textarea>
+                    <!-- 
+                        rows: Altura inicial do textarea.
+                    -->
                     <button type="submit" class="btn">Enviar Mensagem</button>
+                    <!-- 
+                        type="submit": Envia formulário quando clicado.
+                    -->
                 </form>
                 
                 <div class="contato-info">
+                    <!-- 
+                        Informações de contato alternativas.
+                        ESTRATÉGIA: Ofereça múltiplos canais de comunicação.
+                    -->
                     <div class="info-item">
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h4>E-mail</h4>
-                            <p>marstd.arq@gmail.com</p>
+                            <p>ola@anasilva.design</p>
+                            <!-- Substitua pelo seu e-mail real -->
                         </div>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <h4>Localização</h4>
-                            <p>Fortaleza, Ceará</p>
+                            <p>Florianópolis, SC</p>
+                            <!-- Cidade onde atende/está baseado -->
                         </div>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-phone"></i>
                         <div>
-                            <h4>Telefone</h4>
-                            <p>(11) 99999-9999</p>
+                            <h4>WhatsApp</h4>
+                            <p>(48) 99999-9999</p>
+                            <!-- Número profissional -->
                         </div>
                     </div>
                 </div>
@@ -159,25 +638,75 @@ sustentabilidade do setor</p>
         </div>
     </section>
 
-    <!-- Rodapé -->
+    <!-- 
+        RODAPÉ (FOOTER)
+        ESTRATÉGIA: 
+        - Mantenha simples, mas inclua navegação e redes sociais
+        - Copyright atualizado (use JavaScript para ano atual automático)
+        - Reforce sua marca com logo/assinatura
+    -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="logo">
                     <i class="fas fa-leaf"></i>
-                    <span>MeuPortfólio</span>
+                    <span>Ana Silva Design</span>
+                    <!-- 
+                        Substitua "MeuPortfólio" pelo seu nome ou marca pessoal.
+                    -->
                 </div>
-                <p class="footer-text">© 2023 Todos os direitos reservados. Feito com ❤️ e estilo boho.</p>
+                <p class="footer-text">
+                    © 2024 Ana Silva. Todos os direitos reservados.
+                    <br>Feito com ❤️ e estilo boho.
+                    <!-- 
+                        <br>: Quebra de linha.
+                    -->
+                </p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-behance"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <!-- 
+                        REDES SOCIAIS
+                        Substitua "#" pelos links reais.
+                        ESTRATÉGIA: Escolha 3-4 redes relevantes para sua área.
+                    -->
+                    <a href="#" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <!-- target="_blank": Abre link em nova aba -->
+                    <a href="#" target="_blank" aria-label="Behance">
+                        <i class="fab fa-behance"></i>
+                    </a>
+                    <a href="#" target="_blank" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- 
+        JavaScript
+        ESTRATÉGIA: Adicione interatividade, como:
+        - Ano automático no copyright
+        - Smooth scroll para links internos
+        - Animações de entrada
+    -->
+    <script>
+        // JavaScript pode ser inserido diretamente entre tags <script>
+        // Exemplo: Atualizar ano automaticamente no rodapé
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOMContentLoaded: Executa quando HTML está pronto
+            const footerText = document.querySelector('.footer-text');
+            // querySelector: Busca primeiro elemento que corresponde ao seletor
+            const currentYear = new Date().getFullYear(); // Obtém ano atual
+            
+            if (footerText) {
+                footerText.innerHTML = footerText.innerHTML.replace('2024', currentYear);
+                // replace: Troca texto '2024' pelo ano atual
+            }
+        });
+    </script>
 </body>
 </html>
